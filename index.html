@@ -3022,7 +3022,7 @@
         const logo = document.getElementById("logo");
         const button = document.getElementById("button");
         const starPop = document.getElementById("star-pop");
-        const greatElements = [star1, star2, star3, great];
+        const greatElements = [star1, star2, star3];
         //music
         const music = new Howl({
           loop: true,
@@ -3084,13 +3084,11 @@
           const showStars = () => {
             viewElement(star1, false);
             starPopSound.play();
-            star1.addEventListener("animationend", showStar3);
-            star3.addEventListener("animationend", showStar2);
+            setTimeout(showStar3, 300);
+            setTimeout(showStar2, 600);
           };
 
           const hideStars = () => {
-            star1.removeEventListener("animationend", showStar3);
-            star3.removeEventListener("animationend", showStar2);
             greatElements.forEach((element) => {
               viewElement(element, true);
             });
@@ -3124,7 +3122,7 @@
             );
             container.classList.add("background-great-animation");
             showStars();
-            star2.addEventListener("animationend", firstSceneTranstion);
+            setTimeout(firstSceneTranstion, 1000)
           };
 
           const firstSceneTranstion = () => {
@@ -3157,8 +3155,7 @@
             );
             container.classList.add("background-great-animation");
             showStars();
-            star2.removeEventListener("animationend", firstSceneTranstion);
-            star2.addEventListener("animationend", secondSceneTranstion);
+            setTimeout(secondSceneTranstion, 1000);
           };
 
           const secondSceneTranstion = () => {
